@@ -1,6 +1,6 @@
 {
   "name": "@exotjs/cors",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Cross Origin Requests (CORs) plugin (middleware) for Exot",
   "author": "Daniel Regeci",
   "license": "MIT",
@@ -27,7 +27,7 @@
     }
   },
   "dependencies": {
-    "@exotjs/exot": "^0.0.2"
+    "@exotjs/exot": "0.0.3"
   },
   "devDependencies": {
     "@types/node": "^20.9.0",
@@ -36,5 +36,8 @@
     "tsx": "^4.0.0",
     "typescript": "^5.2.2",
     "vitest": "^1.0.1"
-  }
+  },
+  "peerDependencies": {
+    "@exotjs/exot": ">= 0.0.3"
+}
 }
