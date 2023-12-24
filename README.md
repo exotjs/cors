@@ -4,7 +4,7 @@
 
 ```js
 import { Exot } from '@exotjs/exot';
-import cors from '@exotjs/cors';
+import { cors } from '@exotjs/cors';
 
 new Exot()
   // mount plugin

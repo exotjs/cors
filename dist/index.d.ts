@@ -10,4 +10,4 @@ export interface CORSOptions {
     origin?: '*' | true | string[];
     preflight?: boolean;
 }
-export declare const cors: (options?: CORSOptions) => Exot<{}, {}, {}, {}, ContextInterface<any, any, any, any, {}, {}>>;
+export declare const cors: (options?: CORSOptions) => Exot<{}, {}, {}, {}, ContextInterface<{}, any, any, any, {}>>;

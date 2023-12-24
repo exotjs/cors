@@ -26,22 +26,22 @@ export const cors =  (options: CORSOptions = {}) => {
 
   function setAllowOrigin(ctx: ContextInterface, originHeader: string) {
     if (origin === '*') {
-      ctx.set.headers.set('vary', '*');
-      ctx.set.headers.set('access-control-allow-origin', '*');
+      ctx.res.headers.set('vary', '*');
+      ctx.res.headers.set('access-control-allow-origin', '*');
     
     } else if (origin === true) {
-      ctx.set.headers.set('vary', originHeader ? 'origin' : '*');
-      ctx.set.headers.set('access-control-allow-origin', originHeader || '*');
+      ctx.res.headers.set('vary', originHeader ? 'origin' : '*');
+      ctx.res.headers.set('access-control-allow-origin', originHeader || '*');
 
     } else if (origin.includes(originHeader)) {
-      ctx.set.headers.set('vary', 'origin');
-      ctx.set.headers.set('access-control-allow-origin', originHeader);
+      ctx.res.headers.set('vary', 'origin');
+      ctx.res.headers.set('access-control-allow-origin', originHeader);
     }
   }
 
   function setHeader(ctx: ContextInterface, name: string, value: string | string[]) {
     if (value?.length) {
-      ctx.set.headers.set(name, Array.isArray(value) ? value.join(', ') : value);
+      ctx.res.headers.set(name, Array.isArray(value) ? value.join(', ') : value);
     }
   }
 
@@ -55,12 +55,12 @@ export const cors =  (options: CORSOptions = {}) => {
         setHeader(ctx, 'access-control-allow-methods', methods);
         setHeader(ctx, 'access-control-allow-headers', allowedHeaders);
         if (credentials) {
-          ctx.set.headers.set('access-control-allow-credentials', 'true');
+          ctx.res.headers.set('access-control-allow-credentials', 'true');
         }
         if (ctx.method === 'OPTIONS' && preflight) {
-          ctx.set.status = 204;
+          ctx.res.status = 204;
           if (maxAge) {
-            ctx.set.headers.set('access-control-max-age', String(maxAge));
+            ctx.res.headers.set('access-control-max-age', String(maxAge));
           }
           return '';
         } else if (ctx.method !== 'OPTIONS') {
@@ -69,3 +69,5 @@ export const cors =  (options: CORSOptions = {}) => {
       }
     });
 };
+
+export default cors;
